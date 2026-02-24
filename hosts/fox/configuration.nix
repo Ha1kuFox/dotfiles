@@ -12,6 +12,7 @@
       enable = true;
       plymouth = true;
     };
+    firefox.enable = true;
     vm = {
       enable = true;
       host = "fox";

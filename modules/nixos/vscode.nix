@@ -43,6 +43,7 @@ flake.lib.mkMod {
             "window.menuBarVisibility" = "toggle";
             "editor.fontSize" = 15;
             "editor.cursorBlinking" = "solid";
+            "workbench.startupEditor" = "hidden";
 
             "editor.formatOnSave" = true;
             "nix.enableLanguageServer" = true;
