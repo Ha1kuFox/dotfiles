@@ -1,4 +1,9 @@
-{ flake, lib, config, ... }:
+{
+  flake,
+  lib,
+  config,
+  ...
+}:
 let
   cfg = config.mods.hardware;
 in
