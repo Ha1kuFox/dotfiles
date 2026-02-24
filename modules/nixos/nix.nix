@@ -53,8 +53,6 @@ flake.lib.mkMod {
           clean.extraArgs = "--keep-since 4d --keep 10";
           flake = cfg.helpers.flakePath;
         };
-
-        environment.systemPackages = [ pkgs.nix-output-monitor ];
       })
     ];
 }

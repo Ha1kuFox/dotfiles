@@ -2,7 +2,6 @@
   flake,
   lib,
   config,
-  pkgs,
   ...
 }:
 let
@@ -28,6 +27,7 @@ flake.lib.mkMod {
         25569
         25565
         21116
+        3000 # For fluxer
       ];
       checkReversePath = "loose";
     };
