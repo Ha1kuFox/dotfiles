@@ -39,7 +39,10 @@
     };
   };
 
-  config.environment.systemPackages = with pkgs; [ keepassxc ];
+  config.environment.systemPackages = with pkgs; [
+    keepassxc
+    ayugram-desktop
+  ];
 
   config.nixpkgs.hostPlatform = "x86_64-linux";
   config.system.stateVersion = "25.05";
