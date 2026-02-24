@@ -3,10 +3,6 @@
   imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
-    fluxer = {
-      enable = true;
-      hostName = "";
-    };
     tailscale.enable = true;
     hardware.enable = true;
     vscode.enable = true;
