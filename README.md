@@ -1,6 +1,6 @@
 # pawttern
 
-NixOS конфигурация которая использует flake и [blueprint](github.com/numtide/blueprint) с кастомной библиотекой функций для того чтобы сделать каждый файл nix модулем или, как я их называю: **mod**.
+NixOS конфигурация которая использует flake и [blueprint](github.com/numtide/blueprint) с кастомной библиотекой функций для того чтобы сделать каждый файл nix модулем или, как я их называю: **mods**.
 
 ## Установка
 
@@ -9,7 +9,7 @@ git clone https://github.com/Ha1kuFox/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 
 # Применить конфиг(обязательно см. justfile)
-just build-system
+just switch
 ```
 
 ## Структура
