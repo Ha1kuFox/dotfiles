@@ -12,11 +12,11 @@ flake.lib.mkMod {
   name = "hardware";
 
   options = {
-    bluetooth = flake.lib.mkBool lib true "Enable Bluetooth support";
-    sound = flake.lib.mkBool lib true "Enable Pipewire sound";
+    bluetooth = flake.lib.mkBool lib true "Вкл. Bluetooth";
+    sound = flake.lib.mkBool lib true "Вкл. Pipewire для звука";
   };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     services.pipewire = lib.mkIf cfg.sound {
       enable = true;
       alsa.enable = true;

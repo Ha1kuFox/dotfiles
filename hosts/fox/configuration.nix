@@ -3,6 +3,7 @@
   imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
+    #cinny.enable = true;
     tailscale.enable = true;
     hardware.enable = true;
     vscode.enable = true;
@@ -43,6 +44,7 @@
   config.environment.systemPackages = with pkgs; [
     keepassxc
     ayugram-desktop
+    yandex-music
   ];
 
   config.nixpkgs.hostPlatform = "x86_64-linux";

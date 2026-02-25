@@ -12,13 +12,13 @@ flake.lib.mkMod {
   name = "vm";
 
   options = {
-    host = flake.lib.mkStr lib "nixos" "The flake configuration name to build";
-    memory = flake.lib.mkStr lib "4096" "Amount of RAM for the VM (in MB)";
-    cores = flake.lib.mkStr lib "4" "Number of CPU cores";
-    autoLogin = flake.lib.mkBool lib true "Enable auto-login in VM";
+    host = flake.lib.mkStr lib "nixos" "Имя хоста под который будем собирать";
+    memory = flake.lib.mkStr lib "4096" "Кол-во RAM для VM (в MB)";
+    cores = flake.lib.mkStr lib "4" "Кол-во CPU ядер";
+    autoLogin = flake.lib.mkBool lib true "Авто-логин в VM";
   };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     environment.shellAliases = {
       nhvm = "rm -f ${cfg.host}.qcow2 && nixos-rebuild build-vm --flake .#${cfg.host} && ./result/bin/run-${cfg.host}-vm";
     };

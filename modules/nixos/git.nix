@@ -12,11 +12,11 @@ flake.lib.mkMod {
   name = "git";
 
   options = {
-    userName = flake.lib.mkStr lib "User" "Git user name";
-    email = flake.lib.mkStr lib "user@example.com" "Git user email";
+    userName = flake.lib.mkStr lib "User" "Имя пользователя Git";
+    email = flake.lib.mkStr lib "user@example.com" "Git email пользователя";
   };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
       config = {

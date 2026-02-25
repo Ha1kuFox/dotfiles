@@ -13,11 +13,11 @@ flake.lib.mkMod {
   name = "network";
 
   options = {
-    hostName = flake.lib.mkStr lib "nixos" "The hostname of the machine";
-    bypass = flake.lib.mkBool lib true "Add v2raya vpn with xray and zapret with simple config";
+    hostName = flake.lib.mkStr lib "nixos" "Имя хоста";
+    bypass = flake.lib.mkBool lib true "ВПН";
   };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     services.v2raya = {
       enable = cfg.bypass;
       cliPackage = pkgs.xray;

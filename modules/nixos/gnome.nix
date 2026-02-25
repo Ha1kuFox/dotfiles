@@ -21,12 +21,15 @@ flake.lib.mkMod {
   name = "gnome";
 
   options = {
-    debloat = flake.lib.mkBool lib true "Remove GNOME default bloatware";
-    extensions = flake.lib.mkBool lib true "Enable GNOME extensions and themes";
+    debloat = flake.lib.mkBool lib true "Убрать стандратные GNOME приложения";
+    extensions = flake.lib.mkBool lib true "Вкл. GNOME расширения и темы";
   };
 
   configs = lib.mkIf cfg.enable {
-    services.displayManager.gdm.enable = true;
+    services.displayManager.gdm = {
+      enable = true;
+      autoSuspend = false;
+    };
     services.desktopManager.gnome.enable = true;
 
     home-manager.users.${config.mods.user.name} = lib.mkIf cfg.extensions {

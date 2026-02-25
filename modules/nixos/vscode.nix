@@ -5,17 +5,21 @@
   config,
   ...
 }:
+let
+  cfg = config.mods.vscode;
+in
 flake.lib.mkMod {
   inherit lib config;
   name = "vscode";
 
   options = { };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     home-manager.users.${config.mods.user.name} = {
       home.packages = with pkgs; [
         nil
         just
+        devenv
       ];
 
       programs.vscode = {
@@ -56,7 +60,6 @@ flake.lib.mkMod {
           };
         };
       };
-
       programs.direnv = {
         enable = true;
         nix-direnv.enable = true;

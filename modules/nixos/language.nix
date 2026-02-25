@@ -4,13 +4,16 @@
   config,
   ...
 }:
+let
+  cfg = config.mods.language;
+in
 flake.lib.mkMod {
   inherit lib config;
   name = "language";
 
   options = { };
-  configs = {
-    # TODO: Steam and many apps dont use my lang by default
+  configs = lib.mkIf cfg.enable {
+    # TODO: Стим и тп не используют русский из коробки
     time.timeZone = "Asia/Omsk";
     i18n = {
       defaultLocale = "ru_RU.UTF-8";

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.mods.network;
+  cfg = config.mods.tailscale;
 in
 flake.lib.mkMod {
   inherit lib config;
@@ -13,9 +13,9 @@ flake.lib.mkMod {
 
   options = { };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     services.tailscale = {
-      enable = cfg.enable;
+      inherit (cfg) enable;
       openFirewall = true;
     };
     networking.firewall = {

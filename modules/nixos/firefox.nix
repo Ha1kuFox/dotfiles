@@ -13,7 +13,5 @@ flake.lib.mkMod {
 
   options = { };
 
-  configs = {
-    programs.firefox.enable = cfg.enable;
-  };
+  configs = lib.mkIf cfg.enable { programs.firefox.enable = true; };
 }

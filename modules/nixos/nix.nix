@@ -12,12 +12,12 @@ flake.lib.mkMod {
   name = "nix";
 
   options = {
-    automaticGC = flake.lib.mkBool lib true "Automatically run garbage collector";
+    automaticGC = flake.lib.mkBool lib true "Автоматическая сборка мусора, лучше использовать helpers";
     helpers = lib.mkOption {
       type = lib.types.submodule {
         options = {
-          enable = flake.lib.mkBool lib true "Enable additional utilites for nix";
-          flakePath = flake.lib.mkStr lib "/home/user/dotfiles" "Path to the flake directory";
+          enable = flake.lib.mkBool lib true "Доп. утилиты для nix";
+          flakePath = flake.lib.mkStr lib "/home/user/dotfiles" "Путь к папке с flake";
         };
       };
     };
@@ -29,6 +29,7 @@ flake.lib.mkMod {
     in
     lib.mkMerge [
       {
+        nixpkgs.config.allowUnfree = true;
         nix = {
           settings = {
             experimental-features = [

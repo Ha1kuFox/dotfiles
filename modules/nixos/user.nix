@@ -13,11 +13,11 @@ flake.lib.mkMod {
   name = "user";
 
   options = {
-    name = flake.lib.mkStr lib "user" "The default username";
-    description = flake.lib.mkStr lib "User" "The user's full name";
+    name = flake.lib.mkStr lib "user" "Имя пользователя";
+    description = flake.lib.mkStr lib cfg.name "Отображаемое имя";
   };
 
-  configs = {
+  configs = lib.mkIf cfg.enable {
     programs.fish.enable = true;
     users.users.${cfg.name} = {
       isNormalUser = true;
