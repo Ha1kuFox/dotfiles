@@ -1,9 +1,17 @@
-{ flake, pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
+  flake,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+  ]
+  ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
     #cinny.enable = true;
+    catppuccin.enable = true;
     tailscale.enable = true;
     hardware.enable = true;
     vscode.enable = true;

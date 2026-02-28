@@ -28,7 +28,7 @@ flake.lib.mkMod {
 
         profiles.default = {
           extensions = with pkgs.vscode-extensions; [
-            golang.go
+            #golang.go
             jnoortheen.nix-ide
             mkhl.direnv
             christian-kohler.path-intellisense
