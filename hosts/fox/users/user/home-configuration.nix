@@ -1,6 +1,12 @@
 { inputs, ... }:
 {
-  imports = [ inputs.catppuccin.homeModules.catppuccin ];
-  home.username = "user";
-  home.stateVersion = "25.05";
+  imports = [
+    inputs.catppuccin.homeModules.catppuccin
+    inputs.stylix.homeModules.stylix
+  ];
+  home = {
+    #backupFileExtension = "old";
+    username = "user";
+    stateVersion = "25.05";
+  };
 }

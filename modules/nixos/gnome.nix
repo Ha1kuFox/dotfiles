@@ -14,6 +14,7 @@ let
     vitals
     luminus-desktop
     dash-to-dock
+    user-themes
   ];
 in
 flake.lib.mkMod {
@@ -33,40 +34,17 @@ flake.lib.mkMod {
     services.desktopManager.gnome.enable = true;
 
     home-manager.users.${config.mods.user.name} = lib.mkIf cfg.extensions {
-      home.packages =
-        extensions
-        ++ (with pkgs; [
-          morewaita-icon-theme
-          bibata-cursors
-        ]);
+      home.packages = extensions;
       dconf.settings = {
         "org/gnome/shell" = {
           enabled-extensions = map (ext: ext.extensionUuid) extensions;
         };
-        "org/gnome/desktop/interface" = {
-          "color-scheme" = "prefer-dark";
-          "cursor-theme" = "Bibata-Modern-Ice";
-          "icon-theme" = "MoreWaita";
-        };
       };
-      home.pointerCursor = {
-        name = "Bibata-Modern-Ice";
-        package = pkgs.bibata-cursors;
-        size = 16;
-        gtk.enable = true;
-        x11.enable = true;
-      };
-    };
-    qt = {
-      enable = true;
-      platformTheme = "gnome";
-      style = "adwaita-dark";
     };
 
     environment.systemPackages = with pkgs; [
       gnome-console
       nautilus
-      adwaita-icon-theme
     ];
 
     services.gnome = lib.mkIf cfg.debloat {

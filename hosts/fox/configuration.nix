@@ -47,6 +47,12 @@
         flakePath = "/home/user/workspace/nix/dotfiles";
       };
     };
+    gaming = {
+      enable = true;
+      steam = true;
+      hytale = true;
+      minecraft = true;
+    };
   };
 
   config.environment.systemPackages = with pkgs; [
@@ -54,9 +60,7 @@
     ayugram-desktop
     yandex-music
     jetbrains.idea-oss
-    (anytype.override {
-      commandLineArgs = "--disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland";
-    })
+    anytype
   ];
 
   config.programs.nix-ld.enable = true;

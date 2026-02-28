@@ -22,6 +22,12 @@ flake.lib.mkMod {
         devenv
       ];
 
+      programs.fish.enable = true;
+      programs.starship = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+
       programs.vscode = {
         enable = true;
         package = pkgs.vscodium;
@@ -43,9 +49,9 @@ flake.lib.mkMod {
             "editor.lineNumbers" = "on";
             "editor.glyphMargin" = false;
             "workbench.editor.showTabs" = "single";
-            "terminal.integrated.fontSize" = 14;
+            #"terminal.integrated.fontSize" = 14;
             "window.menuBarVisibility" = "toggle";
-            "editor.fontSize" = 15;
+            #"editor.fontSize" = 15;
             "editor.cursorBlinking" = "solid";
             "workbench.startupEditor" = "hidden";
 
