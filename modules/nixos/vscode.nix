@@ -36,7 +36,7 @@ flake.lib.mkMod {
 
           userSettings = {
             "editor.minimize.enabled" = false;
-            "workbench.activityBar.location" = "none";
+            "workbench.activityBar.location" = "top";
             "workbench.statusBar.visible" = true;
             "editor.showFoldingControls" = "never";
             "workbench.layoutControl.enabled" = false;

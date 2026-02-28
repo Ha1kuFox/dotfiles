@@ -45,6 +45,27 @@
     keepassxc
     ayugram-desktop
     yandex-music
+    jetbrains.idea-oss
+    (anytype.override {
+      commandLineArgs = "--disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    })
+  ];
+
+  config.programs.nix-ld.enable = true;
+  config.programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+    libGL
+    glib
+    libX11
+    fontconfig
+    freetype
   ];
 
   config.nixpkgs.hostPlatform = "x86_64-linux";
