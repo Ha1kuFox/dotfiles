@@ -3,6 +3,7 @@
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     inputs.stylix.homeModules.stylix
+    inputs.caelestia-shell.homeManagerModules.default
     # inputs.plasma-manager.homeModules.plasma-manager
   ];
   home = {

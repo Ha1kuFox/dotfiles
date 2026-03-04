@@ -9,6 +9,7 @@
     vscode.enable = true;
 
     gnome.enable = true;
+    hyprland.enable = true;
     # plasma.enable = true;
 
     language.enable = true;
