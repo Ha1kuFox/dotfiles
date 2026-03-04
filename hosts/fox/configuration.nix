@@ -1,21 +1,16 @@
+{ flake, pkgs, ... }:
 {
-  flake,
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    ./hardware-configuration.nix
-  ]
-  ++ builtins.attrValues flake.nixosModules;
+  imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
-    #cinny.enable = true;
     catppuccin.enable = true;
     tailscale.enable = true;
     hardware.enable = true;
     vscode.enable = true;
+
     gnome.enable = true;
+    # plasma.enable = true;
+
     language.enable = true;
     user.enable = true;
     boot = {
@@ -61,6 +56,8 @@
     yandex-music
     jetbrains.idea-oss
     anytype
+    android-studio
+    obsidian
   ];
 
   config.programs.nix-ld.enable = true;
@@ -79,6 +76,11 @@
     fontconfig
     freetype
   ];
+
+  config.home-manager = {
+    backupFileExtension = "backup";
+    overwriteBackup = true;
+  };
 
   config.nixpkgs.hostPlatform = "x86_64-linux";
   config.system.stateVersion = "25.05";

@@ -15,7 +15,7 @@ flake.lib.mkMod {
   options = { };
 
   configs = lib.mkIf cfg.enable {
-    home-manager.users.${config.mods.user.name} = {
+    home-manager.users.user = {
       home.packages = with pkgs; [
         nil
         just
