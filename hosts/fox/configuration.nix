@@ -58,25 +58,7 @@
     yandex-music
     jetbrains.idea-oss
     anytype
-    android-studio
     obsidian
-  ];
-
-  config.programs.nix-ld.enable = true;
-  config.programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    fuse3
-    icu
-    nss
-    openssl
-    curl
-    expat
-    libGL
-    glib
-    libX11
-    fontconfig
-    freetype
   ];
 
   config.home-manager = {

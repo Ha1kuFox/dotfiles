@@ -20,6 +20,7 @@ flake.lib.mkMod {
         nil
         just
         devenv
+        kdePackages.qtdeclarative
       ];
 
       programs.fish.enable = true;
@@ -33,15 +34,33 @@ flake.lib.mkMod {
         package = pkgs.vscodium;
 
         profiles.default = {
-          extensions = with pkgs.vscode-extensions; [
-            #golang.go
-            jnoortheen.nix-ide
-            mkhl.direnv
-            christian-kohler.path-intellisense
-          ];
+          extensions =
+            with pkgs.vscode-extensions;
+            [
+              #golang.go
+              jnoortheen.nix-ide
+              mkhl.direnv
+              christian-kohler.path-intellisense
+
+              ms-python.python
+              ms-python.vscode-pylance
+            ]
+            ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+              {
+                name = "qt-python-pack";
+                publisher = "TheQtCompany";
+                version = "1.0.1";
+                sha256 = "sha256-cF6DwuVfwM5Lna4eh1O/moe2BZP+15Tcyiibw/3v6AU=";
+              }
+              {
+                name = "felgo";
+                publisher = "felgo";
+                version = "2.0.1";
+                sha256 = "sha256-5bPbnDduGDAOU56TYRaWM1jxu1D7eczxCX1+xjwkTP8=";
+              }
+            ];
 
           userSettings = {
-            "editor.minimize.enabled" = false;
             "workbench.activityBar.location" = "top";
             "workbench.statusBar.visible" = true;
             "editor.showFoldingControls" = "never";
@@ -49,20 +68,30 @@ flake.lib.mkMod {
             "editor.lineNumbers" = "on";
             "editor.glyphMargin" = false;
             "workbench.editor.showTabs" = "single";
-            #"terminal.integrated.fontSize" = 14;
             "window.menuBarVisibility" = "toggle";
-            #"editor.fontSize" = 15;
             "editor.cursorBlinking" = "solid";
-            "workbench.startupEditor" = "hidden";
-
+            "workbench.startupEditor" = "none";
             "editor.formatOnSave" = true;
+
+            "catppuccin.accentColor" = "peach";
+            "json.schemaDownload.trustedDomains" = {
+              "https://schemastore.azurewebsites.net/" = true;
+              "https://raw.githubusercontent.com/" = true;
+              "https://www.schemastore.org/" = true;
+              "https://json.schemastore.org/" = true;
+              "https://json-schema.org/" = true;
+              "https://esm.sh/" = true;
+            };
+
+            "qt-qml.doNotAskForQmllsDownload" = true;
+            "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+            "qt-qml.qmlls.additionalImportPaths" = [
+              "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml"
+            ];
+            "direnv.restart.automatic" = true;
+
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "nil";
-
-            "go.useLanguageServer" = true;
-            "go.lintTool" = "golangci-lint";
-
-            "direnv.silent" = true;
           };
         };
       };
