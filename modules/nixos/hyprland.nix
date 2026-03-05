@@ -34,8 +34,22 @@ flake.lib.mkMod {
           environment = [ ];
         };
         settings = {
-          bar.status = {
-            showBattery = false;
+          background.enabled = false;
+          bar = {
+            status = {
+              showBattery = false;
+            };
+            clock.showIcon = false;
+            popouts.activeWindow = false;
+            persistent = true;
+            workspaces = {
+              activeIndicator = true;
+              activeTrail = false;
+              occupiedBg = true;
+              rounded = true;
+              showWindows = false;
+              shown = 5;
+            };
           };
           general = {
             apps = {
@@ -47,7 +61,6 @@ flake.lib.mkMod {
               timeouts = [ ];
             };
           };
-          paths.wallpaperDir = "~/Images";
         };
         cli = {
           enable = true;
@@ -62,17 +75,53 @@ flake.lib.mkMod {
       wayland.windowManager.hyprland = {
         enable = true;
         settings = {
-          exec-once = [
-            "swww init"
-          ];
+          general = {
+            resize_on_border = true;
+            gaps_in = 5;
+            gaps_out = 10;
+            border_size = 2;
+            layout = "master";
+          };
+
+          master = {
+            new_status = true;
+            allow_small_split = true;
+            mfact = 0.5;
+          };
+
+          decoration = {
+            rounding = 20;
+          };
 
           bind = [
-            "SUPER, Q, exec, wezterm"
+            "SUPER, T, exec, wezterm"
             "SUPER, E, exec, nautilus"
             "SUPER, SPACE, global, caelestia:launcher"
+            "SUPER, D, exec, caelestia shell drawers toggle dashboard" # Dashboard
+
+            "SUPER,H, movefocus, l" # Move focus left
+            "SUPER,J, movefocus, d" # Move focus Down
+            "SUPER,K, movefocus, u" # Move focus Up
+            "SUPER,L, movefocus, r" # Move focus Right
 
             "SUPER, C, killactive,"
-            "SUPER, M, exit,"
+          ]
+          ++ (builtins.concatLists (
+            builtins.genList (
+              i:
+              let
+                ws = i + 1;
+              in
+              [
+                "SUPER,code:1${toString i}, workspace, ${toString ws}"
+                "SUPER SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            ) 9
+          ));
+
+          bindm = [
+            "SUPER,mouse:272, movewindow"
+            "SUPER,R, resizewindow"
           ];
 
           bindl = [
@@ -108,11 +157,10 @@ flake.lib.mkMod {
             "ELECTRON_OZONE_PLATFORM_HINT,auto"
             "__GL_GSYNC_ALLOWED,0"
             "__GL_VRR_ALLOWED,0"
-            "DISABLE_QT5_COMPAT,0"
             "DIRENV_LOG_FORMAT,"
-            "WLR_DRM_NO_ATOMIC,1"
-            "WLR_BACKEND,vulkan"
-            "WLR_RENDERER,vulkan"
+            #"WLR_DRM_NO_ATOMIC,1"
+            #"WLR_BACKEND,vulkan"
+            #"WLR_RENDERER,vulkan"
             "WLR_NO_HARDWARE_CURSORS,1"
             "SDL_VIDEODRIVER,wayland"
             "CLUTTER_BACKEND,wayland"
@@ -123,7 +171,7 @@ flake.lib.mkMod {
           };
 
           misc = {
-            vfr = true;
+            vfr = false; # What is this
             disable_hyprland_logo = true;
             disable_splash_rendering = true;
             disable_autoreload = true;
@@ -133,20 +181,47 @@ flake.lib.mkMod {
           input = {
             kb_layout = "us,ru";
 
-            kb_options = "caps:escape";
+            kb_options = "grp:alt_shift_toggle";
             follow_mouse = 1;
-            sensitivity = 0.5;
             repeat_delay = 300;
             repeat_rate = 50;
-            numlock_by_default = true;
-
-            touchpad = {
-              natural_scroll = true;
-              clickfinger_behavior = true;
-            };
           };
 
-          monitor = ",preferred,auto,1";
+          animations = {
+            enabled = true;
+            bezier = [
+              "linear, 0, 0, 1, 1"
+              "md3_standard, 0.2, 0, 0, 1"
+              "md3_decel, 0.05, 0.7, 0.1, 1"
+              "md3_accel, 0.3, 0, 0.8, 0.15"
+              "overshot, 0.05, 0.9, 0.1, 1.1"
+              "crazyshot, 0.1, 1.5, 0.76, 0.92"
+              "hyprnostretch, 0.05, 0.9, 0.1, 1.0"
+              "menu_decel, 0.1, 1, 0, 1"
+              "menu_accel, 0.38, 0.04, 1, 0.07"
+              "easeInOutCirc, 0.85, 0, 0.15, 1"
+              "easeOutCirc, 0, 0.55, 0.45, 1"
+              "easeOutExpo, 0.16, 1, 0.3, 1"
+              "softAcDecel, 0.26, 0.26, 0.15, 1"
+              "md2, 0.4, 0, 0.2, 1"
+            ];
+
+            animation = [
+              "windows, 1, 2.5, md3_decel, popin 60%"
+              "windowsIn, 1, 2.5, md3_decel, popin 60%"
+              "windowsOut, 1, 2.5, md3_accel, popin 60%"
+              "border, 1, 6, default"
+              "fade, 1, 2.5, md3_decel"
+              "layersIn, 1, 2.5, menu_decel, slide"
+              "layersOut, 1, 2.5, menu_accel"
+              "fadeLayersIn, 1, 2.5, menu_decel"
+              "fadeLayersOut, 1, 2.5, menu_accel"
+              "workspaces, 1, 2.5, menu_decel, slide"
+              "specialWorkspace, 1, 2.5, md3_decel, slidevert"
+            ];
+          };
+
+          monitor = ",1920x1080@100,auto,1";
         };
       };
     };

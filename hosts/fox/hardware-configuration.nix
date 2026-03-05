@@ -24,8 +24,14 @@
   };
 
   fileSystems."/mnt/games" = {
-    device = "systemd-1";
-    fsType = "autofs";
+    device = "/dev/disk/by-uuid/f7ec0ea0-ee9e-4e98-972f-dfc1d700de2d";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+      "x-systemd.automount"
+      "x-gvfs-show"
+    ];
   };
 
   fileSystems."/boot" = {

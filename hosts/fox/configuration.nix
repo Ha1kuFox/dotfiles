@@ -16,7 +16,8 @@
     user.enable = true;
     boot = {
       enable = true;
-      plymouth = true;
+      silent = true;
+      #plymouth = true;
     };
     firefox.enable = true;
     vm = {

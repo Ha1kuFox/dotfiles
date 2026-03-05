@@ -7,16 +7,16 @@
 }:
 let
   cfg = config.mods.boot;
-  emptyLogo = pkgs.runCommand "empty-logo.png" { } ''
-    ${pkgs.imagemagick}/bin/convert -size 1x1 xc:transparent $out
-  '';
+  # emptyLogo = pkgs.runCommand "empty-logo.png" { } ''
+  #   ${pkgs.imagemagick}/bin/convert -size 1x1 xc:transparent $out
+  # '';
 in
 flake.lib.mkMod {
   inherit lib config;
   name = "boot";
 
   options = {
-    plymouth = flake.lib.mkBool lib false "Вкл. Plymouth";
+    silent = flake.lib.mkBool lib false "";
     #fastboot = flake.lib.mkBool lib false "Вкл. Fastboot";
   };
 
@@ -28,14 +28,14 @@ flake.lib.mkMod {
       };
       kernelPackages = pkgs.linuxPackages;
 
-      plymouth = {
-        enable = cfg.plymouth;
-        logo = "${emptyLogo}";
-        theme = "catppuccin-mocha";
-        themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
-      };
+      # plymouth = {
+      #   enable = cfg.plymouth;
+      #   logo = "${emptyLogo}";
+      #   theme = "catppuccin-mocha";
+      #   themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+      # };
       kernelParams =
-        if cfg.plymouth then
+        if cfg.silent then
           [
             "quiet"
             "loglevel=3"
@@ -49,13 +49,20 @@ flake.lib.mkMod {
           ]
         else
           [ ];
-      initrd.verbose = if cfg.plymouth then false else true;
-      consoleLogLevel = if cfg.plymouth then 0 else 3;
-      loader.timeout = if cfg.plymouth then 0 else 3;
+      initrd.verbose = if cfg.silent then false else true;
+      consoleLogLevel = if cfg.silent then 0 else 3;
+      loader.timeout = if cfg.silent then 0 else 3;
     };
-    systemd.services.plymouth-halt.enable = if cfg.plymouth then false else true;
-    systemd.services.plymouth-reboot.enable = if cfg.plymouth then false else true;
-    systemd.services.plymouth-poweroff.enable = if cfg.plymouth then false else true;
-    systemd.services.plymouth-kexec.enable = if cfg.plymouth then false else true;
+    systemd = {
+      # services = {
+      #   plymouth-halt.enable = if cfg.plymouth then false else true;
+      #   plymouth-reboot.enable = if cfg.plymouth then false else true;
+      #   plymouth-poweroff.enable = if cfg.plymouth then false else true;
+      #   plymouth-kexec.enable = if cfg.plymouth then false else true;
+      # };
+      settings.Manager = {
+        DefaultTimeoutStopSec = "10s";
+      };
+    };
   };
 }

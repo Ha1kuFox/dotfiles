@@ -28,7 +28,7 @@ flake.lib.mkMod {
       ];
       shell = pkgs.fish;
 
-      initialPassword = "1234"; # TODO: Make passw safe
+      initialPassword = "1234"; # TODO: Make this passw only for vm
     };
   };
 }
