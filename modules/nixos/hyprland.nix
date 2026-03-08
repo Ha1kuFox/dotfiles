@@ -23,6 +23,7 @@ flake.lib.mkMod {
       brightnessctl
       wayland-utils
       wayland-protocols
+      jq
     ];
 
     home-manager.users.user = {
@@ -99,10 +100,25 @@ flake.lib.mkMod {
             "SUPER, SPACE, global, caelestia:launcher"
             "SUPER, D, exec, caelestia shell drawers toggle dashboard" # Dashboard
 
-            "SUPER,H, movefocus, l" # Move focus left
-            "SUPER,J, movefocus, d" # Move focus Down
-            "SUPER,K, movefocus, u" # Move focus Up
-            "SUPER,L, movefocus, r" # Move focus Right
+            # VIM motions
+            "SUPER, H, movefocus, l" # Move focus left
+            "SUPER, J, movefocus, d" # Move focus Down
+            "SUPER, K, movefocus, u" # Move focus Up
+            "SUPER, L, movefocus, r" # Move focus Right
+
+            # Default motions
+            "SUPER, left, movefocus, l" # Move focus left
+            "SUPER, down, movefocus, d" # Move focus Down
+            "SUPER, up, movefocus, u" # Move focus Up
+            "SUPER, right, movefocus, r" # Move focus Right
+
+            "SUPER, Tab, exec, hyprctl keyword general:layout $(hyprctl getoption general:layout -j | jq -r '.str' | grep -q 'master' && echo 'scrolling' || echo 'master')"
+
+            "SUPER, period, layoutmsg, focus r"
+            "SUPER, comma, layoutmsg, focus l"
+
+            "SUPER SHIFT, period, layoutmsg, swapcol r"
+            "SUPER SHIFT, comma, layoutmsg, swapcol l"
 
             "SUPER, C, killactive,"
           ]

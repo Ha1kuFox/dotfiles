@@ -15,13 +15,31 @@ flake.lib.mkMod {
   options = { };
 
   configs = lib.mkIf cfg.enable {
+    # programs.nix-ld.enable = true;
+    # programs.nix-ld.libraries = with pkgs; [
+    #   stdenv.cc.cc
+    #   zlib
+    #   fuse3
+    #   icu
+    #   nss
+    #   openssl
+    #   curl
+    #   expat
+    #   portaudio # For sounddevice python lib
+    # ];
+
     home-manager.users.user = {
       home.packages = with pkgs; [
         nil
         just
         devenv
         kdePackages.qtdeclarative
+        # uv # For python
       ];
+      # Fix uv cant update $PATH
+      # home.sessionPath = [
+      #   "$HOME/.local/bin"
+      # ];
 
       programs.fish.enable = true;
       programs.starship = {
@@ -34,31 +52,29 @@ flake.lib.mkMod {
         package = pkgs.vscodium;
 
         profiles.default = {
-          extensions =
-            with pkgs.vscode-extensions;
-            [
-              #golang.go
-              jnoortheen.nix-ide
-              mkhl.direnv
-              christian-kohler.path-intellisense
+          extensions = with pkgs.vscode-extensions; [
+            #golang.go
+            jnoortheen.nix-ide
+            mkhl.direnv
+            christian-kohler.path-intellisense
 
-              ms-python.python
-              ms-python.vscode-pylance
-            ]
-            ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-              {
-                name = "qt-python-pack";
-                publisher = "TheQtCompany";
-                version = "1.0.1";
-                sha256 = "sha256-cF6DwuVfwM5Lna4eh1O/moe2BZP+15Tcyiibw/3v6AU=";
-              }
-              {
-                name = "felgo";
-                publisher = "felgo";
-                version = "2.0.1";
-                sha256 = "sha256-5bPbnDduGDAOU56TYRaWM1jxu1D7eczxCX1+xjwkTP8=";
-              }
-            ];
+            #ms-python.python
+            #ms-python.vscode-pylance
+          ];
+          #           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          #              {
+          #                name = "qt-python-pack";
+          #                publisher = "TheQtCompany";
+          #               version = "1.0.1";
+          #                sha256 = "sha256-cF6DwuVfwM5Lna4eh1O/moe2BZP+15Tcyiibw/3v6AU=";
+          #              }
+          #              {
+          #                name = "felgo";
+          #                publisher = "felgo";
+          #                version = "2.0.1";
+          #                sha256 = "sha256-5bPbnDduGDAOU56TYRaWM1jxu1D7eczxCX1+xjwkTP8=";
+          #              }
+          #            ];
 
           userSettings = {
             "workbench.activityBar.location" = "top";
@@ -83,11 +99,11 @@ flake.lib.mkMod {
               "https://esm.sh/" = true;
             };
 
-            "qt-qml.doNotAskForQmllsDownload" = true;
-            "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
-            "qt-qml.qmlls.additionalImportPaths" = [
-              "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml"
-            ];
+            # "qt-qml.doNotAskForQmllsDownload" = true;
+            # "qt-qml.qmlls.customExePath" = "${pkgs.kdePackages.qtdeclarative}/bin/qmlls";
+            # "qt-qml.qmlls.additionalImportPaths" = [
+            #   "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml"
+            # ];
             "direnv.restart.automatic" = true;
 
             "nix.enableLanguageServer" = true;
