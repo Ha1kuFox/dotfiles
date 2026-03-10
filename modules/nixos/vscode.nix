@@ -89,7 +89,7 @@ flake.lib.mkMod {
             "workbench.startupEditor" = "none";
             "editor.formatOnSave" = true;
 
-            "catppuccin.accentColor" = "peach";
+            # "catppuccin.accentColor" = "peach";
             "json.schemaDownload.trustedDomains" = {
               "https://schemastore.azurewebsites.net/" = true;
               "https://raw.githubusercontent.com/" = true;

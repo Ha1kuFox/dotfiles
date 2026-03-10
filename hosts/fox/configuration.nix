@@ -3,10 +3,15 @@
   imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
-    catppuccin.enable = true;
+    theming.enable = true;
     tailscale.enable = true;
     hardware.enable = true;
     vscode.enable = true;
+    flutter = {
+      enable = true;
+      user = "user";
+      enableEmulator = false;
+    };
 
     gnome.enable = true;
     hyprland.enable = true;
@@ -59,6 +64,7 @@
     jetbrains.idea-oss
     anytype
     obsidian
+    android-studio
   ];
 
   config.home-manager = {

@@ -19,8 +19,8 @@ let
       "35.0.0"
       "34.0.0"
     ];
-    includeEmulator = true;
-    includeSystemImages = true;
+    includeEmulator = cfg.enableEmulator;
+    includeSystemImages = cfg.enableEmulator;
     systemImageTypes = [ "google_apis_playstore" ];
     abiVersions = [
       "x86_64"
@@ -84,6 +84,7 @@ flake.lib.mkMod {
     addToKvmGroup = flake.lib.mkBool lib true "Добавить в группу kvm (аппаратное ускорение эмулятора)";
     enableAdb = flake.lib.mkBool lib true "Включить ADB и добавить пользователя в группу adbusers";
     user = flake.lib.mkStr lib "" "Имя пользователя, для которого настраивается Flutter";
+    enableEmulator = flake.lib.mkBool lib true "Включить Android эмулятор и system images";
   };
 
   configs = lib.mkIf cfg.enable {
@@ -97,11 +98,12 @@ flake.lib.mkMod {
       [
         flutter
         androidSdk
+        android-tools
         jdk17
         cmake
         ninja
         pkg-config
-        firebase-tools
+        # firebase-tools # https://github.com/firebase/firebase-tools/issues/9781
       ]
       ++ desktopLibs;
 
@@ -111,15 +113,18 @@ flake.lib.mkMod {
       JAVA_HOME = pkgs.jdk17.home;
       GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${androidSdk}/libexec/android-sdk/build-tools/35.0.0/aapt2";
     };
-    environment.sessionVariables.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath desktopLibs;
+    environment.sessionVariables.LD_LIBRARY_PATH = lib.mkMerge [
+      (lib.splitString ":" (lib.makeLibraryPath desktopLibs))
+    ];
     environment.shellInit = ''
       export PATH=$PATH:${androidSdk}/libexec/android-sdk/platform-tools
       export PATH=$PATH:${androidSdk}/libexec/android-sdk/cmdline-tools/latest/bin
-      export PATH=$PATH:${androidSdk}/libexec/android-sdk/emulator
       export PATH="$PATH":"$HOME/.pub-cache/bin"
+    ''
+    + lib.optionalString cfg.enableEmulator ''
+      export PATH=$PATH:${androidSdk}/libexec/android-sdk/emulator
     '';
 
-    programs.adb.enable = cfg.enableAdb;
     users.users = lib.mkIf (cfg.user != "") {
       ${cfg.user}.extraGroups =
         (lib.optional cfg.addToKvmGroup "kvm") ++ (lib.optional cfg.enableAdb "adbusers");

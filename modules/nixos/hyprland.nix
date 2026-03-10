@@ -52,6 +52,15 @@ flake.lib.mkMod {
               shown = 5;
             };
           };
+          appearance = {
+            font.family = {
+              clock = "monocraft";
+              mono = "monocraft";
+              sans = "monocraft";
+            };
+            rounding.scale = 0;
+            transparency.enabled = false;
+          };
           general = {
             apps = {
               terminal = [ "wezterm" ];
@@ -62,6 +71,7 @@ flake.lib.mkMod {
               timeouts = [ ];
             };
           };
+          bar.border.rounding = 0;
         };
         cli = {
           enable = true;
@@ -91,7 +101,7 @@ flake.lib.mkMod {
           };
 
           decoration = {
-            rounding = 20;
+            rounding = 0;
           };
 
           bind = [
