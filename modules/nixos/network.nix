@@ -17,7 +17,7 @@ flake.lib.mkMod {
     bypass = flake.lib.mkBool lib true "ВПН";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     services.v2raya = {
       enable = cfg.bypass;
       cliPackage = pkgs.xray;

@@ -4,15 +4,12 @@
   config,
   ...
 }:
-let
-  cfg = config.mods.language;
-in
 flake.lib.mkMod {
   inherit lib config;
   name = "language";
 
   options = { };
-  configs = lib.mkIf cfg.enable {
+  configs = {
     # TODO: Стим и тп не используют русский из коробки
     time.timeZone = "Asia/Omsk";
     i18n = {

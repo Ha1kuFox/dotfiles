@@ -18,7 +18,7 @@ flake.lib.mkMod {
     autoLogin = flake.lib.mkBool lib true "Авто-логин в VM";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     environment.shellAliases = {
       nhvm = "rm -f ${cfg.host}.qcow2 && nixos-rebuild build-vm --flake .#${cfg.host} && ./result/bin/run-${cfg.host}-vm";
     };

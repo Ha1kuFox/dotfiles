@@ -17,7 +17,7 @@ flake.lib.mkMod {
     description = flake.lib.mkStr lib cfg.name "Отображаемое имя";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     programs.fish.enable = true;
     users.users.${cfg.name} = {
       isNormalUser = true;

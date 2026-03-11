@@ -87,7 +87,7 @@ flake.lib.mkMod {
     enableEmulator = flake.lib.mkBool lib true "Включить Android эмулятор и system images";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     nixpkgs.config = {
       allowUnfree = true;
       android_sdk.accept_license = true;

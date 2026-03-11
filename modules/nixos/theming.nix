@@ -6,7 +6,6 @@
   ...
 }:
 let
-  cfg = config.mods.theming;
   theme = {
     base00 = "000000";
     base01 = "1a1a1a";
@@ -35,45 +34,43 @@ flake.lib.mkMod {
 
   options = { };
 
-  configs = lib.mkIf cfg.enable {
-    home-manager.users.${config.mods.user.name} = {
-      stylix = {
+  home = {
+    stylix = {
+      enable = true;
+      base16Scheme = theme;
+      image = wallpaper;
+      polarity = "dark";
+
+      fonts = {
+        serif = {
+          package = pkgs.monocraft;
+          name = "monocraft";
+        };
+
+        sansSerif = {
+          package = pkgs.monocraft;
+          name = "monocraft";
+        };
+
+        monospace = {
+          package = pkgs.monocraft;
+          name = "monocraft";
+        };
+      };
+
+      cursor = {
+        package = pkgs.catppuccin-cursors.mochaDark;
+        name = "catppuccin-mocha-dark-cursors";
+        size = 24;
+      };
+      icons = {
         enable = true;
-        base16Scheme = theme;
-        image = wallpaper;
-        polarity = "dark";
-
-        fonts = {
-          serif = {
-            package = pkgs.monocraft;
-            name = "monocraft";
-          };
-
-          sansSerif = {
-            package = pkgs.monocraft;
-            name = "monocraft";
-          };
-
-          monospace = {
-            package = pkgs.monocraft;
-            name = "monocraft";
-          };
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "mocha";
+          accent = "peach";
         };
-
-        cursor = {
-          package = pkgs.catppuccin-cursors.mochaDark;
-          name = "catppuccin-mocha-dark-cursors";
-          size = 24;
-        };
-        icons = {
-          enable = true;
-          package = pkgs.catppuccin-papirus-folders.override {
-            flavor = "mocha";
-            accent = "peach";
-          };
-          dark = "Papirus-Dark";
-          light = "Papirus-Light";
-        };
+        dark = "Papirus-Dark";
+        light = "Papirus-Light";
       };
     };
   };

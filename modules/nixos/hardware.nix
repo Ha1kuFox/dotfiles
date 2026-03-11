@@ -16,7 +16,7 @@ flake.lib.mkMod {
     sound = flake.lib.mkBool lib true "Вкл. Pipewire для звука";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     services.pipewire = lib.mkIf cfg.sound {
       enable = true;
       alsa.enable = true;

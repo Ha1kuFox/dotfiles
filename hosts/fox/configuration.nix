@@ -51,7 +51,10 @@
     };
     gaming = {
       enable = true;
-      steam = true;
+      steam = {
+        enable = true;
+        deckMode = true;
+      };
       hytale = true;
       minecraft = true;
     };

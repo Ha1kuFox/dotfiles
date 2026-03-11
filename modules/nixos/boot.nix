@@ -20,7 +20,7 @@ flake.lib.mkMod {
     #fastboot = flake.lib.mkBool lib false "Вкл. Fastboot";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     boot = {
       loader.systemd-boot = {
         enable = true;

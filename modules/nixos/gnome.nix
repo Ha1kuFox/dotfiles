@@ -26,21 +26,21 @@ flake.lib.mkMod {
     extensions = flake.lib.mkBool lib true "Вкл. GNOME расширения и темы";
   };
 
+  home = lib.mkIf cfg.extensions {
+    home.packages = extensions;
+    dconf.settings = {
+      "org/gnome/shell" = {
+        enabled-extensions = map (ext: ext.extensionUuid) extensions;
+      };
+    };
+  };
+
   configs = lib.mkIf cfg.enable {
     services.displayManager.gdm = {
       enable = true;
       autoSuspend = false;
     };
     services.desktopManager.gnome.enable = true;
-
-    home-manager.users.${config.mods.user.name} = lib.mkIf cfg.extensions {
-      home.packages = extensions;
-      dconf.settings = {
-        "org/gnome/shell" = {
-          enabled-extensions = map (ext: ext.extensionUuid) extensions;
-        };
-      };
-    };
 
     environment.systemPackages = with pkgs; [
       gnome-console

@@ -13,7 +13,7 @@ flake.lib.mkMod {
 
   options = { };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     services.tailscale = {
       inherit (cfg) enable;
       openFirewall = true;

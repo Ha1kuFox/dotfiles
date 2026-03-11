@@ -16,7 +16,7 @@ flake.lib.mkMod {
     email = flake.lib.mkStr lib "user@example.com" "Git email пользователя";
   };
 
-  configs = lib.mkIf cfg.enable {
+  configs = {
     programs.git = {
       enable = true;
       config = {
