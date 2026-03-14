@@ -33,7 +33,8 @@ flake.lib.mkMod {
         environment = [ ];
       };
       settings = {
-        background.enabled = false;
+        background.enabled = true;
+        paths.wallpaperDir = "~/Wallpapers";
         bar = {
           status = {
             showBattery = false;
@@ -73,6 +74,16 @@ flake.lib.mkMod {
       };
       cli = {
         enable = true;
+        settings.theme = {
+          enableTerm = false;
+          enableDiscord = false;
+          enableSpicetify = false;
+          enableBtop = false;
+          enableCava = false;
+          enableHypr = false;
+          enableGtk = false;
+          enableQt = false;
+        };
       };
     };
 

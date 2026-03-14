@@ -3,6 +3,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -18,10 +19,9 @@ flake.lib.mkMod {
   };
 
   configs = {
-    services.v2raya = {
-      enable = cfg.bypass;
-      cliPackage = pkgs.xray;
-    };
+    environment.systemPackages = [
+      inputs.flclashx.packages.${pkgs.system}.default
+    ];
     networking = {
       inherit (cfg) hostName;
       networkmanager.enable = true;

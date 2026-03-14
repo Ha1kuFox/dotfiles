@@ -9,7 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hytale.url = "github:TNAZEP/HytaleLauncherFlake";
+    hytale = {
+      url = "github:TNAZEP/HytaleLauncherFlake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,8 +26,18 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    flclashx = {
+      url = "github:ha1kufox/flclashx-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

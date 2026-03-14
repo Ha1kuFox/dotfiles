@@ -6,27 +6,25 @@
   ...
 }:
 let
-  theme = {
-    base00 = "000000";
-    base01 = "1a1a1a";
-    base02 = "2d2d2d";
-    base03 = "4d4d4d";
-    base04 = "95a5a6";
-    base05 = "e0e0e0";
-    base06 = "f5f5f5";
-    base07 = "ffffff";
-    base08 = "d35400";
-    base09 = "e67e22";
-    base0A = "f39c12";
-    base0B = "a04000";
-    base0C = "7f8c8d";
-    base0D = "ff8c00";
-    base0E = "cf4a30";
-    base0F = "5d4037";
-  };
-  wallpaper = pkgs.runCommand "image.png" { } ''
-    ${lib.getExe pkgs.imagemagick} -size 1920x1080 xc:"#${theme.base00}" $out
-  '';
+  # theme = {
+  #   base00 = "000000";
+  #   base01 = "1a1a1a";
+  #   base02 = "2d2d2d";
+  #   base03 = "4d4d4d";
+  #   base04 = "95a5a6";
+  #   base05 = "e0e0e0";
+  #   base06 = "f5f5f5";
+  #   base07 = "ffffff";
+  #   base08 = "d35400";
+  #   base09 = "e67e22";
+  #   base0A = "f39c12";
+  #   base0B = "a04000";
+  #   base0C = "7f8c8d";
+  #   base0D = "ff8c00";
+  #   base0E = "cf4a30";
+  #   base0F = "5d4037";
+  # };
+  theme = "${pkgs.base16-schemes}/share/themes/vesper.yaml";
 in
 flake.lib.mkMod {
   inherit lib config;
@@ -38,7 +36,6 @@ flake.lib.mkMod {
     stylix = {
       enable = true;
       base16Scheme = theme;
-      image = wallpaper;
       polarity = "dark";
 
       fonts = {
