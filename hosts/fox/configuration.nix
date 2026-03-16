@@ -3,6 +3,7 @@
   imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
+    emacs.enable = true;
     theming.enable = true;
     tailscale.enable = true;
     hardware.enable = true;
@@ -15,14 +16,12 @@
 
     gnome.enable = true;
     hyprland.enable = true;
-    # plasma.enable = true;
 
     language.enable = true;
     user.enable = true;
     boot = {
       enable = true;
       silent = true;
-      #plymouth = true;
     };
     firefox.enable = true;
     vm = {
@@ -65,8 +64,6 @@
     ayugram-desktop
     yandex-music
     jetbrains.idea-oss
-    anytype
-    obsidian
     android-studio
   ];
 

@@ -5,7 +5,7 @@ default:
     @just --list
 
 switch:
-    nh os switch {{ flake_path }} --hostname {{ host }}
+    nh os switch {{ flake_path }} --diff always --hostname {{ host }}
 
 vm:
     rm -f nixos.qcow2

@@ -155,6 +155,28 @@
         "type": "github"
       }
     },
+    "firefox-addons": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "pkgs/firefox-addons",
+        "lastModified": 1773460974,
+        "narHash": "sha256-ub9lQJZOgj9351Rv7YrmrimlocUj45AmWi5/vxOkrug=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "cc0fa04294fb230b831e0b0d0d842d6ddb40806f",
+        "type": "gitlab"
+      },
+      "original": {
+        "dir": "pkgs/firefox-addons",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "type": "gitlab"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -366,29 +388,6 @@
         "type": "github"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": [
-          "home-manager"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772361940,
-        "narHash": "sha256-B1Cz+ydL1iaOnGlwOFld/C8lBECPtzhiy/pP93/CuyY=",
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "rev": "a4b33606111c9c5dcd10009042bb710307174f51",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -415,11 +414,11 @@
         "blueprint": "blueprint",
         "caelestia-shell": "caelestia-shell",
         "catppuccin": "catppuccin",
+        "firefox-addons": "firefox-addons",
         "flclashx": "flclashx",
         "home-manager": "home-manager",
         "hytale": "hytale",
         "nixpkgs": "nixpkgs",
-        "plasma-manager": "plasma-manager",
         "stylix": "stylix",
         "treefmt-nix": "treefmt-nix"
       }

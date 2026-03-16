@@ -2,6 +2,7 @@
   flake,
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -47,6 +48,11 @@ flake.lib.mkMod {
         };
       }
       (lib.mkIf cfg.helpers.enable {
+        environment.sessionVariables.FLAKE = cfg.helpers.flakePath;
+        environment.systemPackages = with pkgs; [
+          nix-output-monitor
+          nix-index
+        ];
         programs.nh = {
           enable = true;
           clean.enable = true;

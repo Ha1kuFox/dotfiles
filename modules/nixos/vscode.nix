@@ -16,7 +16,6 @@ flake.lib.mkMod {
       nil
       just
       devenv
-      kdePackages.qtdeclarative
     ];
 
     programs.fish.enable = true;

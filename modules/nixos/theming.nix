@@ -38,6 +38,10 @@ flake.lib.mkMod {
       base16Scheme = theme;
       polarity = "dark";
 
+      targets.firefox.profileNames = [
+        "default"
+      ];
+
       fonts = {
         serif = {
           package = pkgs.monocraft;
