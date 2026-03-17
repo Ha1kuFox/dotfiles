@@ -33,6 +33,11 @@ flake.lib.mkMod {
           jnoortheen.nix-ide
           mkhl.direnv
           christian-kohler.path-intellisense
+          wakatime.vscode-wakatime
+          dart-code.dart-code
+          dart-code.flutter
+          usernamehw.errorlens
+          foam.foam-vscode
         ];
 
         userSettings = {

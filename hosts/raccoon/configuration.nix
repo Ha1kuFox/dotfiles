@@ -3,11 +3,7 @@
   imports = [ ./hardware-configuration.nix ] ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
-    theming.enable = true;
     gnome.enable = true;
-    hyprland.enable = true;
-
-    vscode.enable = true;
 
     language.enable = true;
     hardware.enable = true;
@@ -21,40 +17,33 @@
     tailscale.enable = true;
     network = {
       enable = true;
-      hostName = "fox";
+      hostName = "raccoon";
       bypass = true;
     };
 
     git = {
       enable = true;
-      userName = "ha1ku";
-      email = "darknekodev@yandex.ru";
+      userName = "hasuri";
+      email = "nomail@example.com";
     };
 
     nix = {
       enable = true;
       helpers = {
         enable = true;
-        flakePath = "/home/user/workspace/nix/dotfiles";
+        flakePath = "/home/user/dotfiles";
       };
     };
 
     gaming = {
       enable = true;
-      steam = {
-        enable = true;
-        deckMode = true;
-      };
-      hytale = true;
+      steam.deckMode = true;
       minecraft = true;
     };
   };
 
   config.environment.systemPackages = with pkgs; [
-    keepassxc
     ayugram-desktop
-    yandex-music
-    affine
   ];
 
   config.home-manager = {
@@ -62,6 +51,18 @@
     overwriteBackup = true;
   };
 
+  config = {
+    environment.variables = {
+      GSK_RENDERER = "ngl";
+    };
+    hardware = {
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+    };
+  };
+
   config.nixpkgs.hostPlatform = "x86_64-linux";
-  config.system.stateVersion = "25.05";
+  config.system.stateVersion = "25.11";
 }

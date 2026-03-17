@@ -17,10 +17,10 @@ flake.lib.mkMod {
   options = {
     steam = flake.lib.mkSubm lib {
       enable = flake.lib.mkBool lib true "Вкл. Steam";
-      deckMode = flake.lib.mkBool lib true "Вкл. DeckMode";
+      deckMode = flake.lib.mkBool lib false "Вкл. DeckMode";
     };
-    minecraft = flake.lib.mkBool lib true "Вкл. Minecraft";
-    hytale = flake.lib.mkBool lib true "Вкл. Hytale";
+    minecraft = flake.lib.mkBool lib false "Вкл. Minecraft";
+    hytale = flake.lib.mkBool lib false "Вкл. Hytale";
   };
 
   configs = {
