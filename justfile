@@ -5,26 +5,11 @@ default:
     @just --list
 
 switch:
+    nix fmt
     nh os switch {{ flake_path }} --diff always --hostname {{ host }}
-
-vm:
-    rm -f nixos.qcow2
-    nixos-rebuild build-vm --flake {{ flake_path }}#{{ host }}
-    ./result/bin/run-{{ host }}-vm
 
 check:
     nix flake check {{ flake_path }}
 
-update:
-    nix flake update --flake {{ flake_path }}
-
 clean:
     nh clean all --keep 3
-
-fmt:
-    nix fmt
-
-push:
-    git add .
-    git commit -m "update: configuration sync"
-    git push origin main

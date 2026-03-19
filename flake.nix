@@ -1,48 +1,47 @@
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    blueprint = {
-      url = "github:numtide/blueprint";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hytale = {
-      url = "github:TNAZEP/HytaleLauncherFlake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flclashx = {
-      url = "github:ha1kufox/flclashx-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+	inputs = {
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+		blueprint = {
+			url = "github:numtide/blueprint";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		hytale = {
+			url = "github:TNAZEP/HytaleLauncherFlake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		stylix = {
+			url = "github:nix-community/stylix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		caelestia-shell = {
+			url = "github:caelestia-dots/shell";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		# flclashx = {
+		#   url = "github:ha1kufox/flclashx-flake";
+		#   inputs.nixpkgs.follows = "nixpkgs";
+		# };
+		# catppuccin = {
+		# 	url = "github:catppuccin/nix";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
+		firefox-addons = {
+			url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		treefmt-nix = {
+			url = "github:numtide/treefmt-nix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+	};
 
-  outputs =
-    inputs:
-    inputs.blueprint {
-      inherit inputs;
-      systems = [ "x86_64-linux" ];
-    };
+	outputs = inputs:
+		inputs.blueprint {
+			inherit inputs;
+			systems = ["x86_64-linux"];
+		};
 }

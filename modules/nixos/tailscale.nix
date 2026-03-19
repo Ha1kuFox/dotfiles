@@ -1,35 +1,34 @@
 {
-  flake,
-  lib,
-  config,
-  ...
-}:
-let
-  cfg = config.mods.tailscale;
+	flake,
+	lib,
+	config,
+	...
+}: let
+	cfg = config.mods.tailscale;
 in
-flake.lib.mkMod {
-  inherit lib config;
-  name = "tailscale";
+	flake.lib.mkMod {
+		inherit lib config;
+		name = "tailscale";
 
-  options = { };
+		options = {};
 
-  configs = {
-    services.tailscale = {
-      inherit (cfg) enable;
-      openFirewall = true;
-    };
-    networking.firewall = {
-      enable = true;
-      trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [
-        41641
-        22555
-        25569
-        25565
-        21116
-        3000 # For fluxer
-      ];
-      checkReversePath = "loose";
-    };
-  };
-}
+		configs = {
+			services.tailscale = {
+				inherit (cfg) enable;
+				openFirewall = true;
+			};
+			networking.firewall = {
+				enable = true;
+				trustedInterfaces = ["tailscale0"];
+				allowedUDPPorts = [
+					41641
+					22555
+					25569
+					25565
+					21116
+					3000 # For fluxer
+				];
+				checkReversePath = "loose";
+			};
+		};
+	}

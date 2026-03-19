@@ -1,34 +1,33 @@
 {
-  flake,
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-let
-  cfg = config.mods.user;
+	flake,
+	lib,
+	config,
+	pkgs,
+	...
+}: let
+	cfg = config.mods.user;
 in
-flake.lib.mkMod {
-  inherit lib config;
-  name = "user";
+	flake.lib.mkMod {
+		inherit lib config;
+		name = "user";
 
-  options = {
-    name = flake.lib.mkStr lib "user" "Имя пользователя";
-    description = flake.lib.mkStr lib cfg.name "Отображаемое имя";
-  };
+		options = {
+			name = flake.lib.mkStr lib "user" "Имя пользователя";
+			description = flake.lib.mkStr lib cfg.name "Отображаемое имя";
+		};
 
-  configs = {
-    programs.fish.enable = true;
-    users.users.${cfg.name} = {
-      isNormalUser = true;
-      inherit (cfg) description;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-      ];
-      shell = pkgs.fish;
+		configs = {
+			programs.fish.enable = true;
+			users.users.${cfg.name} = {
+				isNormalUser = true;
+				inherit (cfg) description;
+				extraGroups = [
+					"networkmanager"
+					"wheel"
+				];
+				shell = pkgs.fish;
 
-      initialPassword = "1234"; # TODO: Make this passw only for vm
-    };
-  };
-}
+				initialPassword = "1234"; # TODO: Make this passw only for vm
+			};
+		};
+	}

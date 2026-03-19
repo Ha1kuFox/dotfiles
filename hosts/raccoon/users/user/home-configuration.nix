@@ -1,6 +1,6 @@
 {
-  home = {
-    username = "user";
-    stateVersion = "25.11";
-  };
+	home = {
+		username = "user";
+		stateVersion = "25.11";
+	};
 }

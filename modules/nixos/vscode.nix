@@ -1,78 +1,86 @@
 {
-  flake,
-  pkgs,
-  lib,
-  config,
-  ...
+	flake,
+	pkgs,
+	lib,
+	config,
+	...
 }:
 flake.lib.mkMod {
-  inherit lib config;
-  name = "vscode";
+	inherit lib config;
+	name = "vscode";
 
-  options = { };
+	options = {};
 
-  home = {
-    home.packages = with pkgs; [
-      nil
-      just
-      devenv
-    ];
+	home = {
+		home.packages = with pkgs; [
+			just
+			devenv
+		];
 
-    programs.fish.enable = true;
-    programs.starship = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+		programs.fish.enable = true;
+		programs.starship = {
+			enable = true;
+			enableFishIntegration = true;
+		};
 
-    programs.vscode = {
-      enable = true;
-      package = pkgs.vscodium;
+		programs.vscode = {
+			enable = true;
+			package = pkgs.vscodium;
+			enableUpdateCheck = false;
+			enableExtensionUpdateCheck = false;
+			mutableExtensionsDir = false;
 
-      profiles.default = {
-        extensions = with pkgs.vscode-extensions; [
-          jnoortheen.nix-ide
-          mkhl.direnv
-          christian-kohler.path-intellisense
-          wakatime.vscode-wakatime
-          dart-code.dart-code
-          dart-code.flutter
-          usernamehw.errorlens
-          foam.foam-vscode
-        ];
+			profiles.default = {
+				extensions = with pkgs.vscode-extensions; [
+					jnoortheen.nix-ide
+					mkhl.direnv
+					christian-kohler.path-intellisense
+					dart-code.dart-code
+					dart-code.flutter
+					usernamehw.errorlens
+					foam.foam-vscode
+				];
 
-        userSettings = {
-          "workbench.activityBar.location" = "top";
-          "workbench.statusBar.visible" = true;
-          "editor.showFoldingControls" = "never";
-          "workbench.layoutControl.enabled" = false;
-          "editor.lineNumbers" = "on";
-          "editor.glyphMargin" = false;
-          "workbench.editor.showTabs" = "single";
-          "window.menuBarVisibility" = "toggle";
-          "editor.cursorBlinking" = "solid";
-          "workbench.startupEditor" = "none";
-          "editor.formatOnSave" = true;
+				userSettings = {
+					"workbench.activityBar.location" = "top";
+					"workbench.statusBar.visible" = true;
+					"editor.showFoldingControls" = "never";
+					"workbench.layoutControl.enabled" = false;
+					"editor.lineNumbers" = "on";
+					"editor.glyphMargin" = false;
+					"workbench.editor.showTabs" = "single";
+					"window.menuBarVisibility" = "toggle";
+					"editor.cursorBlinking" = "solid";
+					"workbench.startupEditor" = "none";
+					"editor.formatOnSave" = true;
 
-          "json.schemaDownload.trustedDomains" = {
-            "https://schemastore.azurewebsites.net/" = true;
-            "https://raw.githubusercontent.com/" = true;
-            "https://www.schemastore.org/" = true;
-            "https://json.schemastore.org/" = true;
-            "https://json-schema.org/" = true;
-            "https://esm.sh/" = true;
-          };
+					"json.schemaDownload.trustedDomains" = {
+						"https://schemastore.azurewebsites.net/" = true;
+						"https://raw.githubusercontent.com/" = true;
+						"https://www.schemastore.org/" = true;
+						"https://json.schemastore.org/" = true;
+						"https://json-schema.org/" = true;
+						"https://esm.sh/" = true;
+					};
 
-          "direnv.restart.automatic" = true;
+					"direnv.restart.automatic" = true;
 
-          "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "nil";
-        };
-      };
-    };
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      enableFishIntegration = true;
-    };
-  };
+					"nix.enableLanguageServer" = true;
+					"nix.serverPath" = "nixd";
+					"nix.serverSettings" = {
+						"nixd" = {
+							"formatting" = {
+								"command" = ["alejandra"];
+							};
+						};
+					};
+				};
+			};
+		};
+		programs.direnv = {
+			enable = true;
+			nix-direnv.enable = true;
+			enableFishIntegration = true;
+		};
+	};
 }
