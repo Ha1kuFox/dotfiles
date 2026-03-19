@@ -39,6 +39,7 @@ flake.lib.mkMod {
 					dart-code.flutter
 					usernamehw.errorlens
 					foam.foam-vscode
+					geequlim.godot-tools
 				];
 
 				userSettings = {

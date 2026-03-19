@@ -11,6 +11,7 @@
 		hyprland.enable = true;
 
 		vscode.enable = true;
+		godot.enable = true;
 
 		language.enable = true;
 		hardware.enable = true;
