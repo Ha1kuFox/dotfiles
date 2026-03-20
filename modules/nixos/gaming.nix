@@ -3,11 +3,11 @@
 	lib,
 	pkgs,
 	config,
-	inputs,
+	#inputs,
 	...
 }: let
 	cfg = config.mods.gaming;
-	hytalePkg = inputs.hytale.packages.${pkgs.system}.default;
+	# hytalePkg = inputs.hytale.packages.${pkgs.system}.default;
 in
 	flake.lib.mkMod {
 		inherit lib config;
@@ -71,7 +71,7 @@ in
 							}
 						))
 
-					(lib.optional cfg.hytale hytalePkg)
+					#(lib.optional cfg.hytale hytalePkg)
 
 					(lib.optional cfg.steam.enable pkgs.r2modman)
 					(lib.optional cfg.steam.enable pkgs.usbutils)
