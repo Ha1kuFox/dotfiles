@@ -7,6 +7,11 @@
 
 	config.mods = {
 		theming.enable = true;
+		gammastep = {
+			latitude = "54.99";
+			longitude = "73.37";
+		};
+
 		gnome.enable = true;
 		hyprland.enable = true;
 
