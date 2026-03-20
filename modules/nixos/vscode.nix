@@ -26,11 +26,11 @@ flake.lib.mkMod {
 		programs.vscode = {
 			enable = true;
 			package = pkgs.vscodium;
-			enableUpdateCheck = false;
-			enableExtensionUpdateCheck = false;
 			mutableExtensionsDir = false;
 
 			profiles.default = {
+				enableUpdateCheck = false;
+				enableExtensionUpdateCheck = false;
 				extensions = with pkgs.vscode-extensions; [
 					jnoortheen.nix-ide
 					mkhl.direnv
