@@ -1,22 +1,23 @@
 # pawttern
 
-NixOS конфигурация которая использует flake и [blueprint](https://numtide.github.io/blueprint/main/) с кастомной библиотекой функций для того чтобы сделать каждый файл nix модулем или, как я их называю: **mods**.
+NixOS config that use flakes and [blueprint](https://numtide.github.io/blueprint/main/) with custom lib that make every nix file into option in "mods" category.
 
-## Установка
+## Install
 
 ```bash
-git clone https://github.com/Ha1kuFox/dotfiles ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/Ha1kuFox/dotfiles ~/{your_folder}
+cd ~/{your_folder}
 
-# Применить конфиг(обязательно см. justfile)
+# look to justfile
 just switch
 ```
 
-## Структура
+## Structure
 
-- **`flake.nix`**: Основной flake конфиг. [Blueprint](https://numtide.github.io/blueprint/main/) way.
-- **`hosts/`**: Конфиги моих устройств
-- **`modules/`**: Моды, на текущий момент в активной переработке в связи со сменой фреймворка.
-- **`lib/`**: Библиотека кастомных переиспользуемых функций
-- **`justfile`**: Стандартные команды
-- **`formatter.nix`**: Конфигурация форматирования кода
+- **`hosts/`**: Device-specific modules
+- **`lib/`**: My lib
+- **`modules/`**: All custom mods
+
+- **`devenv.nix`**: Development environment for work in vscode
+- **`formatter.nix`**: formatter configuration(usage: `nix fmt`)
+- **`flake.nix`**: Main flake. [Blueprint](https://numtide.github.io/blueprint/main/) style.
