@@ -7,10 +7,6 @@
 
 	config.mods = {
 		theming.enable = true;
-		gammastep = {
-			latitude = "54.99";
-			longitude = "73.37";
-		};
 
 		gnome.enable = true;
 		hyprland.enable = true;
@@ -32,6 +28,7 @@
 			enable = true;
 			hostName = "fox";
 			bypass = true;
+			netgate = true;
 		};
 
 		git = {
@@ -64,6 +61,7 @@
 		ayugram-desktop
 		yandex-music
 		pixelorama
+		godsvg
 	];
 
 	config.home-manager = {
