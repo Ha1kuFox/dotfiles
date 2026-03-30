@@ -3,6 +3,7 @@
 	lib,
 	config,
 	pkgs,
+	inputs,
 	...
 }:
 flake.lib.mkMod {
@@ -12,8 +13,6 @@ flake.lib.mkMod {
 	options = {};
 
 	configs = {
-		programs.hyprland.enable = true;
-		programs.hyprland.xwayland.enable = true;
 		environment.systemPackages = with pkgs; [
 			wezterm
 			pavucontrol
@@ -21,10 +20,21 @@ flake.lib.mkMod {
 			wayland-utils
 			wayland-protocols
 			jq
+
+			sunsetr
 		];
+		programs.hyprland = {
+			enable = true;
+			package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+			portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+		};
 	};
 
 	home = {
+		imports = [
+			inputs.hyprland.homeManagerModules.default
+		];
+
 		programs.caelestia = {
 			enable = true;
 			systemd = {
@@ -94,7 +104,22 @@ flake.lib.mkMod {
 
 		wayland.windowManager.hyprland = {
 			enable = true;
+			xwayland.enable = true;
+
+			package = null;
+			portalPackage = null;
+
+			# https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
+			systemd.variables = ["--all"];
+
+			plugins = [
+				# inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+			];
+
 			settings = {
+				exec-once = [
+					"sunsetr"
+				];
 				general = {
 					resize_on_border = true;
 					gaps_in = 5;

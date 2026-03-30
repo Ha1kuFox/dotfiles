@@ -13,6 +13,11 @@
 		# 	url = "github:TNAZEP/HytaleLauncherFlake";
 		# 	inputs.nixpkgs.follows = "nixpkgs";
 		# };
+		hyprland.url = "github:hyprwm/Hyprland";
+		# hypr-dynamic-cursors = {
+		# 	url = "github:VirtCode/hypr-dynamic-cursors";
+		# 	inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
+		# };
 		android-nixpkgs = {
 			url = "github:tadfisher/android-nixpkgs/stable";
 			inputs.nixpkgs.follows = "nixpkgs";
