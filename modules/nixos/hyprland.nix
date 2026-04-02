@@ -143,13 +143,13 @@ flake.lib.mkMod {
 						"SUPER, T, exec, wezterm"
 						"SUPER, E, exec, nautilus"
 						"SUPER, SPACE, global, caelestia:launcher"
-						"SUPER, D, exec, caelestia shell drawers toggle dashboard" # Dashboard
+						"SUPER SHIFT, G, exec, godot"
 
 						# VIM motions
 						"SUPER, H, movefocus, l" # Move focus left
 						"SUPER, J, movefocus, d" # Move focus Down
 						"SUPER, K, movefocus, u" # Move focus Up
-						"SUPER, L, movefocus, r" # Move focus Right
+						"SUPER, L, movefocus, r" # Move focus Rightzzz
 
 						# Default motions
 						"SUPER, left, movefocus, l" # Move focus left
