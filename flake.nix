@@ -18,6 +18,18 @@
 		# 	url = "github:VirtCode/hypr-dynamic-cursors";
 		# 	inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
 		# };
+		dms = {
+			url = "github:AvengeMedia/DankMaterialShell/stable";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		niri = {
+			url = "github:sodiboo/niri-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		danksearch = {
+			url = "github:AvengeMedia/danksearch";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		android-nixpkgs = {
 			url = "github:tadfisher/android-nixpkgs/stable";
 			inputs.nixpkgs.follows = "nixpkgs";

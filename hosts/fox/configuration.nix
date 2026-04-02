@@ -6,10 +6,11 @@
 	imports = [./hardware-configuration.nix] ++ builtins.attrValues flake.nixosModules;
 
 	config.mods = {
-		theming.enable = true;
+		#theming.enable = true;
 
 		gnome.enable = true;
-		hyprland.enable = true;
+		#hyprland.enable = true;
+		dms.enable = true;
 
 		vscode.enable = true;
 		godot.enable = true;
@@ -59,9 +60,11 @@
 	config.environment.systemPackages = with pkgs; [
 		keepassxc
 		ayugram-desktop
-		yandex-music
+		obsidian
+
 		pixelorama
 		godsvg
+		#mission-center
 	];
 
 	config.home-manager = {
