@@ -6,6 +6,11 @@
 }: {
 	imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
+	hardware.graphics = {
+		enable = true;
+		enable32Bit = true;
+	};
+
 	boot.initrd.availableKernelModules = [
 		"xhci_pci"
 		"ahci"
