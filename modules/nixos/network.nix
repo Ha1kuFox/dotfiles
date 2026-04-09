@@ -3,7 +3,7 @@
 	lib,
 	config,
 	pkgs,
-	# inputs,
+	inputs,
 	...
 }: let
 	cfg = config.mods.network;
@@ -71,9 +71,10 @@ in
 						};
 					};
 			};
-			# environment.systemPackages = [
-			#   inputs.flclashx.packages.${pkgs.system}.default
-			# ];
+			environment.systemPackages = [
+				inputs.flclashx.packages.${pkgs.system}.default
+				packages.karing
+			];
 			networking = {
 				inherit (cfg) hostName;
 				networkmanager = {

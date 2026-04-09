@@ -42,10 +42,10 @@
 			url = "github:caelestia-dots/shell";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		# flclashx = {
-		#   url = "github:ha1kufox/flclashx-flake";
-		#   inputs.nixpkgs.follows = "nixpkgs";
-		# };
+		flclashx = {
+			url = "github:ha1kufox/flclashx-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		# catppuccin = {
 		# 	url = "github:catppuccin/nix";
 		# 	inputs.nixpkgs.follows = "nixpkgs";
