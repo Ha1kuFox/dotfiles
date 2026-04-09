@@ -7,7 +7,6 @@
 	...
 }: let
 	cfg = config.mods.gaming;
-	# hytalePkg = inputs.hytale.packages.${pkgs.system}.default;
 in
 	flake.lib.mkMod {
 		inherit lib config;
@@ -18,9 +17,9 @@ in
 				flake.lib.mkSubm lib {
 					enable = flake.lib.mkBool lib true "Вкл. Steam";
 					deckMode = flake.lib.mkBool lib false "Вкл. DeckMode";
+					piracy = flake.lib.mkBool lib false "Программы для пиратства";
 				};
 			minecraft = flake.lib.mkBool lib false "Вкл. Minecraft";
-			hytale = flake.lib.mkBool lib false "Вкл. Hytale";
 		};
 
 		configs = {
@@ -71,9 +70,13 @@ in
 							}
 						))
 
-					#(lib.optional cfg.hytale hytalePkg)
+					(lib.optional cfg.steam.piracy pkgs.rar)
+					(lib.optional cfg.steam.piracy pkgs.qbittorrent)
+					(lib.optional cfg.steam.piracy pkgs.winePackages.full)
 
 					(lib.optional cfg.steam.enable pkgs.r2modman)
+					(lib.optional cfg.steam.enable pkgs.protonup-qt)
+					(lib.optional cfg.steam.enable pkgs.winetricks)
 					(lib.optional cfg.steam.enable pkgs.usbutils)
 				];
 		};
