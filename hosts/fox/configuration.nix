@@ -11,9 +11,10 @@
 		gnome.enable = true;
 		#hyprland.enable = true;
 		dms.enable = true;
+		pointerCursor.enable = true;
 
 		vscode.enable = true;
-		godot.enable = true;
+		#godot.enable = true;
 
 		language.enable = true;
 		hardware.enable = true;
@@ -51,27 +52,32 @@
 			steam = {
 				enable = true;
 				deckMode = true;
+				piracy = true;
 			};
-			hytale = true;
+			#hytale = true;
 			minecraft = true;
 		};
 	};
 
-	config.environment.systemPackages = with pkgs; [
-		keepassxc
-		ayugram-desktop
-		obsidian
+	config = {
+		services.flatpak.enable = true;
 
-		pixelorama
-		godsvg
-		#mission-center
-	];
+		environment.systemPackages = with pkgs; [
+			keepassxc
+			ayugram-desktop
+			obsidian
 
-	config.home-manager = {
-		backupFileExtension = "backup";
-		overwriteBackup = true;
+			pixelorama
+			godsvg
+			#mission-center
+		];
+
+		home-manager = {
+			backupFileExtension = "backup";
+			overwriteBackup = true;
+		};
+
+		nixpkgs.hostPlatform = "x86_64-linux";
+		system.stateVersion = "25.05";
 	};
-
-	config.nixpkgs.hostPlatform = "x86_64-linux";
-	config.system.stateVersion = "25.05";
 }

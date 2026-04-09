@@ -1,6 +1,5 @@
 {
 	flake,
-	inputs,
 	lib,
 	pkgs,
 	config,
@@ -14,7 +13,7 @@
 			src =
 				pkgs.fetchurl {
 					url = "https://github.com/rehanzo/phinger-cursors-gruvbox-material/releases/download/3328966123/phinger-cursors-variants.tar.bz2";
-					sha256 = "sha256-10cc5ygpv3m0ir1gk7dm1f08p777g518d7w1q529idklf1ihc0d8=";
+					sha256 = "sha256-qAEGY3B0tphEwYGfhkJ555yLgAu1nflCjqCOfZ8vjIE=";
 				};
 
 			sourceRoot = ".";
@@ -53,7 +52,7 @@ in
 
 			gtk.cursorTheme = {
 				name = "phinger-cursors-gruvbox-material";
-				size = 32;
+				size = 16;
 			};
 		};
 	}
