@@ -18,6 +18,8 @@ in
 
 		configs = {
 			programs.fish.enable = true;
+
+			nix.settings.trusted-users = ["root" "@wheel" cfg.name];
 			users.users.${cfg.name} = {
 				isNormalUser = true;
 				inherit (cfg) description;
@@ -26,8 +28,6 @@ in
 					"wheel"
 				];
 				shell = pkgs.fish;
-
-				initialPassword = "1234"; # TODO: Make this passw only for vm
 			};
 		};
 	}
