@@ -73,7 +73,6 @@ in
 			};
 			environment.systemPackages = [
 				inputs.flclashx.packages.${pkgs.system}.default
-				packages.karing
 			];
 			networking = {
 				inherit (cfg) hostName;
