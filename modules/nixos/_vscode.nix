@@ -12,26 +12,6 @@ flake.lib.mkMod {
 	options = {};
 
 	home = {
-		home.packages = with pkgs; [
-			just
-			devenv
-			fzf
-		];
-
-		programs.fish.enable = true;
-		programs.starship = {
-			enable = true;
-			enableFishIntegration = true;
-		};
-
-		programs.zoxide = {
-			enable = true;
-			enableFishIntegration = true;
-			options = [
-				"--cmd cd"
-			];
-		};
-
 		programs.vscode = {
 			enable = true;
 			package = pkgs.vscodium;
@@ -56,12 +36,6 @@ flake.lib.mkMod {
 							version = "1.15.1";
 							sha256 = "4kpW3bwXWrhWOslp/GQjCT2bv/kBCktsFo30orIII5U=";
 						}
-						# {
-						# 	name = "dms-theme";
-						# 	publisher = "danklinux";
-						# 	version = "0.0.3";
-						# 	sha256 = "MI1x1wiqvwg/N89oMuNVp0qlRT84ubvuMjtpkX0WKQY=";
-						# }
 					];
 
 				userSettings = {
@@ -100,11 +74,6 @@ flake.lib.mkMod {
 					};
 				};
 			};
-		};
-		programs.direnv = {
-			enable = true;
-			nix-direnv.enable = true;
-			enableFishIntegration = true;
 		};
 	};
 }
