@@ -64,6 +64,15 @@ flake.lib.mkMod {
 				settings = {
 					prefer-no-csd = true;
 
+					cursor = {
+						hide-when-typing = true;
+						hide-after-inactive-ms = 1000;
+					};
+
+					hotkey-overlay = {
+						skip-at-startup = true;
+					};
+
 					layout = {
 						gaps = 12;
 						default-column-width = {proportion = 0.5;};
