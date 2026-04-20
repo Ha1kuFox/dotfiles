@@ -67,9 +67,7 @@
 			ayugram-desktop
 			obsidian
 
-			pixelorama
 			godsvg
-			#mission-center
 		];
 
 		home-manager = {
