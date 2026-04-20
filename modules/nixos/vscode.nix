@@ -15,12 +15,21 @@ flake.lib.mkMod {
 		home.packages = with pkgs; [
 			just
 			devenv
+			fzf
 		];
 
 		programs.fish.enable = true;
 		programs.starship = {
 			enable = true;
 			enableFishIntegration = true;
+		};
+
+		programs.zoxide = {
+			enable = true;
+			enableFishIntegration = true;
+			options = [
+				"--cmd cd"
+			];
 		};
 
 		programs.vscode = {
