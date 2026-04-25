@@ -53,7 +53,6 @@
       enable = true;
       enable32Bit = true;
     };
-    services.xserver.videoDrivers = ["amdgpu"];
     home-manager = {
       backupFileExtension = "backup";
       overwriteBackup = true;
