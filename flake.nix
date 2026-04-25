@@ -46,6 +46,10 @@
 			url = "github:ha1kufox/flclashx-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		bookokrat = {
+			url = "github:bugzmanov/bookokrat";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		# catppuccin = {
 		# 	url = "github:catppuccin/nix";
 		# 	inputs.nixpkgs.follows = "nixpkgs";

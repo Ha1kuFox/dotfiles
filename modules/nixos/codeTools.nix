@@ -14,6 +14,7 @@ flake.lib.mkMod {
 			just
 			devenv
 			fzf
+			helix
 		];
 
 		programs.fish.enable = true;

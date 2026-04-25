@@ -26,6 +26,7 @@ in
 				extraGroups = [
 					"networkmanager"
 					"wheel"
+					"seat"
 				];
 				shell = pkgs.fish;
 			};

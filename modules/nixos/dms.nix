@@ -22,6 +22,11 @@ flake.lib.mkMod {
 			inputs.danksearch.homeModules.dsearch
 		];
 
+		gtk.iconTheme = {
+			package = pkgs.papirus-icon-theme;
+			name = "Papirus";
+		};
+
 		home.sessionVariables = {
 			XDG_CURRENT_DESKTOP = "Niri";
 			XDG_SESSION_DESKTOP = "Niri";
@@ -56,6 +61,7 @@ flake.lib.mkMod {
 			brightnessctl
 			playerctl
 			xwayland-satellite
+			papirus-icon-theme
 		];
 
 		programs = {
