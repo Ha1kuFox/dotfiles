@@ -1,6 +1,7 @@
 {
   flake,
   inputs,
+  pkgs,
   ...
 }: {
   imports =
@@ -44,6 +45,9 @@
   };
 
   config = {
+    environment.systemPackages = with pkgs; [
+      alacritty
+    ];
     services.displayManager.defaultSession = "none+i3";
     hardware.graphics = {
       enable = true;
