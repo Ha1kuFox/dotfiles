@@ -15,10 +15,22 @@ flake.lib.mkMod {
 			devenv
 			fzf
 			helix
+			zellij
 		];
 
-		programs.fish.enable = true;
+		programs.fish = {
+			enable = true;
+			interactiveShellInit = ''
+				set fish_greeting # Disable greeting
+			'';
+		};
+
 		programs.starship = {
+			enable = true;
+			enableFishIntegration = true;
+		};
+
+		programs.zellij = {
 			enable = true;
 			enableFishIntegration = true;
 		};

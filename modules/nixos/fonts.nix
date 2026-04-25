@@ -10,13 +10,14 @@ flake.lib.mkMod {
 	name = "fonts";
 
 	configs = {
+		fonts.fontDir.enable = true;
 		fonts.packages = with pkgs; [
-			(nerdfonts.override {fonts = ["CascadiaCode"];})
+			nerd-fonts.caskaydia-cove
 		];
-		Cfonts.fontconfig.defaultFonts = {
-			monospace = ["Cascadia Code NF"];
-			sansSerif = ["Cascadia Code NF"];
-			serif = ["Cascadia Code NF"];
+		fonts.fontconfig.defaultFonts = {
+			monospace = ["CaskaydiaCove NFM"];
+			sansSerif = ["CaskaydiaCove NFM"];
+			serif = ["CaskaydiaCove NFM"];
 		};
 	};
 }

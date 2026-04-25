@@ -9,15 +9,7 @@
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		# hytale = {
-		# 	url = "github:TNAZEP/HytaleLauncherFlake";
-		# 	inputs.nixpkgs.follows = "nixpkgs";
-		# };
 		hyprland.url = "github:hyprwm/Hyprland";
-		# hypr-dynamic-cursors = {
-		# 	url = "github:VirtCode/hypr-dynamic-cursors";
-		# 	inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
-		# };
 		dms = {
 			url = "github:AvengeMedia/DankMaterialShell/stable";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -50,10 +42,6 @@
 			url = "github:bugzmanov/bookokrat";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		# catppuccin = {
-		# 	url = "github:catppuccin/nix";
-		# 	inputs.nixpkgs.follows = "nixpkgs";
-		# };
 		firefox-addons = {
 			url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 			inputs.nixpkgs.follows = "nixpkgs";

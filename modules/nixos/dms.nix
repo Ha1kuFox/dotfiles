@@ -162,10 +162,6 @@ flake.lib.mkMod {
 				package = pkgs.niri;
 			};
 
-			dsearch = {
-				enable = true;
-			};
-
 			dank-material-shell = {
 				enable = true;
 
