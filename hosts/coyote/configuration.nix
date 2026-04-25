@@ -14,6 +14,7 @@
     ++ builtins.attrValues flake.nixosModules;
 
   config.mods = {
+    lemurs.enable = true;
     i3.enable = true;
     language.enable = true;
     hardware.enable = true;
@@ -48,7 +49,6 @@
     environment.systemPackages = with pkgs; [
       alacritty
     ];
-    services.displayManager.defaultSession = "none+i3";
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
