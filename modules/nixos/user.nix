@@ -22,6 +22,9 @@ in
       nix.settings.trusted-users = ["root" "@wheel" cfg.name];
       users.users.${cfg.name} = {
         isNormalUser = true;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiFd8H6TzVnoqthkx6qOxvP71Dd3vawQphpHcHH8tgZ user@fox"
+        ];
         initialPassword = "0000";
         inherit (cfg) description;
         extraGroups = [
