@@ -15,6 +15,12 @@ in
 			email = flake.lib.mkStr lib "user@example.com" "Git email пользователя";
 		};
 
+		home = {
+			programs.gh = {
+				enable = true;
+			};
+		};
+
 		configs = {
 			programs.git = {
 				enable = true;
