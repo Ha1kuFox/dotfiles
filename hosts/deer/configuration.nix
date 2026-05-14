@@ -44,7 +44,7 @@
 				enable = true;
 				deckMode = true;
 			};
-			hytale = true;
+			# hytale = true;
 			minecraft = true;
 		};
 	};
