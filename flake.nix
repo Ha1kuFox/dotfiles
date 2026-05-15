@@ -50,9 +50,18 @@
 			url = "github:numtide/treefmt-nix";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		disko = {
-			url = "github:nix-community/disko";
+
+		zapret-discord-youtube = {
+			url = "github:kartavkun/zapret-discord-youtube";
 			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		zapret-list-imrovich-domains = {
+			url = "https://raw.githubusercontent.com/IMROVICH/zapret-telegram/main/lists/list-general-user.txt";
+			flake = false;
+		};
+		zapret-list-imrovich-ipset = {
+			url = "https://raw.githubusercontent.com/IMROVICH/zapret-telegram/main/lists/ipset-all.txt";
+			flake = false;
 		};
 	};
 

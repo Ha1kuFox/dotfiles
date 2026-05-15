@@ -11,6 +11,7 @@
 
 	config.mods = {
 		godot.enable = true;
+<<<<<<< HEAD
 		# lemurs.enable = true;
 		autologin.enable = true;
 		codeTools.enable = true;
@@ -27,6 +28,12 @@
 				};
 			};
 		};
+=======
+		lemurs.enable = true;
+		codeTools.enable = true;
+		fonts.enable = true;
+		dms.enable = true;
+>>>>>>> f56d158307be282ee92a6aecac89e42ec6e09eef
 		pointerCursor.enable = true;
 		language.enable = true;
 		hardware.enable = true;
@@ -73,7 +80,10 @@
 			keepassxc
 			ayugram-desktop
 			godsvg
+<<<<<<< HEAD
 			activitywatch
+=======
+>>>>>>> f56d158307be282ee92a6aecac89e42ec6e09eef
 			whosthere
 			pastel
 			netscanner
